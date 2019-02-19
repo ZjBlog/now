@@ -1,0 +1,6 @@
+{
+  "name": "shici",
+  "version": 2,
+  "builds": [{ "src": "*.html", "use": "@now/html-minifier" }],
+  "alias": ["shici","jinrishici"]
+}
