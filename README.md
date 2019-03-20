@@ -1,2 +1,2 @@
 # now
-actions now deploy
+actions now  deploy
