@@ -3,5 +3,5 @@
   "version": 2,
   "builds": [{ "src": "*.html", "use": "@now/html-minifier" },
              { "src": "**/*.js", "use": "@now/node" }],
-  "alias": ["shici","short"]
+  "alias": ["shici","shorturl"]
 }
