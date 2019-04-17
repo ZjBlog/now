@@ -7,92 +7,39 @@ const app = express()
 app.use(helmet())
 
 app.get('*', async function (req, res) {
-    let type = req.query.type
-    let url = req.query.url
-    let response
-    if(!!url && url.startsWith('http')){
-        if ('b' === type) {
-            const body = {
-                url: url
-            };
-            response = await fetch('https://dwz.cn/admin/v2/create', {
-                    method: 'post',
-                    body: JSON.stringify(body),
-                    headers: {
-                        'Content-Type': 'application/json;charset=UTF-8',
-                        'Token': '590da538da07fe1c5dbe51890f81d016'
-                    },
+   let type = req.query.type
+   if(!type){
+       type=1
+   }
+   let response = await fetch('https://www.bing.com/HPImageArchive.aspx?format=js&idx='+type+'&n=1', {
+                    method: 'get'
                 })
                 .then(res1 => res1.json())
                 .then(json => {
-                    if (json.Code === 0) {
-                        return json.ShortUrl
-                    } else {
-                        return json.ErrMsg
-                    }
+                    console.info(json.images[0].url)
+                    return 'https://www.bing.com'+json.images[0].url
                 })
                 .catch(res2 => {
-                    console.log(res2)
-                    return 'ok'
+                    return 'https://www.bing.com/th?id=OHR.HopeValley_ZH-CN2208363231_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp'
                 });
-        } else {
-            response = await fetch('http://api.t.sina.com.cn/short_url/shorten.json?source=3271760578&url_long=' + url)
-                .then(res1 => res1.json())
-                .then(json => {
-                    return json[0].url_short
-                }).catch(res2 => {
-                    console.log(res2)
-                    return 'ok'
-                });
-        }
-    
-    }else{
-        response='网址路径不正确'
-    }
     res.send(response)
 });
 app.post('*', async function (req, res) {
-    let type = req.body.type
-    let url = req.body.url
-    let response
-    if(!!url&&url.startsWith('http')){
-        if ('b' === type) {
-            const body = {
-                url: url
-            };
-            response = await fetch('https://dwz.cn/admin/v2/create', {
-                    method: 'post',
-                    body: JSON.stringify(body),
-                    headers: {
-                        'Content-Type': 'application/json;charset=UTF-8',
-                        'Token': '590da538da07fe1c5dbe51890f81d016'
-                    },
+   let type = req.body.type
+   if(!type){
+       type=1
+   }
+   let response = await fetch('https://www.bing.com/HPImageArchive.aspx?format=js&idx='+type+'&n=1', {
+                    method: 'get'
                 })
                 .then(res1 => res1.json())
                 .then(json => {
-                    if (json.Code === 0) {
-                        return json.ShortUrl
-                    } else {
-                        return json.ErrMsg
-                    }
+                    console.info(json.images[0].url)
+                    return 'https://www.bing.com'+json.images[0].url
                 })
                 .catch(res2 => {
-                    console.log(res2)
-                    return 'ok'
+                    return 'https://www.bing.com/th?id=OHR.HopeValley_ZH-CN2208363231_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp'
                 });
-        } else {
-            response = await fetch('http://api.t.sina.com.cn/short_url/shorten.json?source=3271760578&url_long=' + url)
-                .then(res1 => res1.json())
-                .then(json => {
-                    return json[0].url_short
-                }).catch(res2 => {
-                    console.log(res2)
-                    return 'ok'
-                });
-        }
-    }else{
-        response='网址不正确'
-    }
     res.send(response)
 });
 
