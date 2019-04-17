@@ -11,6 +11,7 @@ app.get('*', async function (req, res) {
    if(!type){
        type=1
    }
+   res.type('png');
    let response = await fetch('https://www.bing.com/HPImageArchive.aspx?format=js&idx='+type+'&n=1', {
                     method: 'get'
                 })
@@ -22,13 +23,16 @@ app.get('*', async function (req, res) {
                 .catch(res2 => {
                     return 'https://www.bing.com/th?id=OHR.HopeValley_ZH-CN2208363231_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp'
                 });
-    res.send(response)
+   let data = await fetch(response)
+    .then(res1 => res1.buffer()).then(buffer => {return buffer});
+    res.send(data)
 });
 app.post('*', async function (req, res) {
    let type = req.body.type
    if(!type){
        type=1
    }
+   res.type('png');
    let response = await fetch('https://www.bing.com/HPImageArchive.aspx?format=js&idx='+type+'&n=1', {
                     method: 'get'
                 })
@@ -40,7 +44,9 @@ app.post('*', async function (req, res) {
                 .catch(res2 => {
                     return 'https://www.bing.com/th?id=OHR.HopeValley_ZH-CN2208363231_1920x1080.jpg&rf=LaDigue_1920x1080.jpg&pid=hp'
                 });
-    res.send(response)
+   let data = await fetch(response)
+    .then(res1 => res1.buffer()).then(buffer => {return buffer});
+    res.send(data)
 });
 
 module.exports = app
