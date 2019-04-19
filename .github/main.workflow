@@ -1,6 +1,6 @@
 workflow "New workflow" {
   on = "push"
-  resolves = ["release"]
+  resolves = ["send-message"]
 }
 
 action "deploy" {
@@ -27,4 +27,13 @@ action "release" {
   needs = ["Filters for GitHub Actions"]
   secrets = ["ZEIT_TOKEN"]
   args = "alias --local-config=./sc/now.json"
+}
+
+action "send-message" {
+  uses = "./message"
+  needs = ["release"]
+  secrets = ["URL"]
+  env = {
+    message = "小主部署完成"
+  }
 }
