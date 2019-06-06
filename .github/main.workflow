@@ -1,6 +1,6 @@
 workflow "New workflow" {
   on = "push"
-  resolves = ["send-message"]
+  resolves = ["Message"]
 }
 
 action "deploy" {
