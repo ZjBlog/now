@@ -29,11 +29,11 @@ action "release" {
   args = "alias --local-config=./sc/now.json"
 }
 
-action "send-message" {
-  uses = "./message"
+action "Message" {
+  uses = "ZjBlog/message@master"
   needs = ["release"]
   secrets = ["URL"]
   env = {
-    message = "小主部署完成"
+    MESSAGE = "now部署成功"
   }
 }
