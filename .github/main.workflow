@@ -26,7 +26,7 @@ action "release" {
   uses = "actions/zeit-now@666edee2f3632660e9829cb6801ee5b7d47b303d"
   needs = ["Filters for GitHub Actions"]
   secrets = ["ZEIT_TOKEN"]
-  args = " -e API_KEY='0b2bdeda43b5688921839c8ecb20399b' alias --local-config=./sc/now.json"
+  args = " alias --local-config=./sc/now.json"
 }
 
 action "Message" {
