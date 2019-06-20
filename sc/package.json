@@ -6,6 +6,7 @@
   "dependencies": {
     "express": "^4.16.4",
     "helmet": "^3.16.0",
+    "http-proxy": "^1.17.0",
     "node-fetch": "^2.3.0"
   },
   "scripts": {
