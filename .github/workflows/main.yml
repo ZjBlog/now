@@ -18,7 +18,7 @@ jobs:
     - name: deploy website
       uses: amondnet/now-deployment@v1
       with:
-        zeit-token: ${{ secrets.ZEIT_TOKEN }}
+        zeit-token: ${{ secrets.token }}
         now-args: '--prod'
     - name: send-message
       uses: ZjBlog/message@v1.5
