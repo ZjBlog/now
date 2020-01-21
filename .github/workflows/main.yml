@@ -19,7 +19,6 @@ jobs:
       uses: amondnet/now-deployment@v1
       with:
         zeit-token: ${{ secrets.token }}
-        now-args: 'alias --local-config=./sc/now.json'
         working-directory: ./sc
     - name: send-message
       uses: ZjBlog/message@v1.5
