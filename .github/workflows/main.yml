@@ -19,6 +19,7 @@ jobs:
       uses: amondnet/now-deployment@v1
       with:
         zeit-token: ${{ secrets.token }}
+        github-token: ${{ secrets.GITHUB_TOKEN }}  
         working-directory: ./sc
     - name: send-message
       uses: ZjBlog/message@v1.5
