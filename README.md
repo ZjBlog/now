@@ -1,3 +1,4 @@
+![](https://github.com/ZjBlog/now/workflows/now/badge.svg)
 # now
 actions now  deploy
 
