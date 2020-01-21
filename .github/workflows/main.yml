@@ -1,0 +1,27 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: Run a multi-line script
+      run: |
+        echo Add other actions to build,
+        echo test, and deploy your project.
+    - name: deploy website
+      uses: amondnet/now-deployment@v1
+      with:
+        zeit-token: ${{ secrets.ZEIT_TOKEN }}
+        now-args: '--prod'
+    - name: send-message
+      uses: ZjBlog/message@v1.5
+      env: 
+        MESSAGE: "now部署成功"
+        URL: ${{ secrets.URL }}
